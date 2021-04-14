@@ -17,16 +17,14 @@ public class EuropaceFirstCase {
             JSONArray pricesArray = (JSONArray) jsonObj.get("prices");
 
             // variables to find the days with smallest low and highest high
-            double smallestLow =  Double.parseDouble(((JSONObject) pricesArray.get(0)).get("low").toString());
-            double highestHigh = Double.parseDouble(((JSONObject) pricesArray.get(0)).get("high").toString());
-            String dayWithSmallestLow = ((JSONObject) pricesArray.get(0)).get("date").toString();
-            String dayWithHighestHigh = dayWithSmallestLow;
+            double smallestLow =  Double.MAX_VALUE;
+            double highestHigh = Double.MIN_VALUE;
+            String dayWithSmallestLow = "";
+            String dayWithHighestHigh = "";
 
             // variables to find the day with the largest difference between open and close
-            double defaultOpen = Double.parseDouble(((JSONObject) pricesArray.get(0)).get("open").toString());
-            double defaultClose = Double.parseDouble(((JSONObject) pricesArray.get(0)).get("close").toString());
-            double defaultDifferenceOpenClose = Math.abs(defaultOpen - defaultClose);
-            String dayWithLargestDifference = dayWithSmallestLow;
+            double defaultDifferenceOpenClose = 0;
+            String dayWithLargestDifference = "";
 
             double sumOfAllCloses = 0;
 
