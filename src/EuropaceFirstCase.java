@@ -37,7 +37,7 @@ public class EuropaceFirstCase {
                 Object close = singleDay.get("close");
                 String singleDayDate = singleDay.get("date").toString();
 
-                // code to find the day with smallest low
+                // to find the day with smallest low (niedrigster Kurs)
                 if ( low != null ) {
                     double singleDayLow = Double.parseDouble(low.toString());
                     if (singleDayLow < smallestLow) {
@@ -46,7 +46,7 @@ public class EuropaceFirstCase {
                     }
                 }
 
-                // code to find the highest high
+                // to find the day with the highest high (höchster Kurs)
                 if ( high != null) {
                     double singleDayHigh = Double.parseDouble(high.toString());
                     if (singleDayHigh > highestHigh) {
@@ -56,7 +56,7 @@ public class EuropaceFirstCase {
                 }
 
 
-                // code to find the day with largest difference between open and close
+                // to find the day with largest difference between open and close
                 if ( open != null && close != null ) {
                     double singleDayOpen = Double.parseDouble(singleDay.get("open").toString());
                     double singleDayClose = Double.parseDouble(singleDay.get("close").toString());
@@ -74,7 +74,8 @@ public class EuropaceFirstCase {
                 }
 
             }
-
+            // the days with no close (null values) are considered to have close=0
+            // the average is calculated irrespective of the null values for some days
             double averageOfAllCloses = sumOfAllCloses / pricesArray.size();
 
             System.out.println("Day with smallest low: "+dayWithSmallestLow+". The smallest low is: "+smallestLow);
